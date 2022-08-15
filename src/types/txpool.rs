@@ -18,6 +18,22 @@ pub struct TxpoolContentInfo {
     pub queued: BTreeMap<Address, BTreeMap<String, Transaction>>,
 }
 
+/// Transaction Pool ContentFrom Info
+///
+/// The contentFrom inspection property can be queried to list the exact details of 
+/// the transactions for a particular address currently pending for inclusion in the next block(s), as well
+/// as the ones that are being scheduled for future execution only.
+///
+/// See [here](https://github.com/markya0616/go-ethereum/blob/158a0a197aaae4d24a4a01b61922705bc887ca80/core/tx_pool.go#L498) for more details
+///
+#[derive(Debug, Default, Clone, PartialEq, Deserialize, Serialize)]
+pub struct TxpoolContentFromInfo {
+    /// pending tx
+    pub pending: BTreeMap<String, Transaction>,
+    /// queued tx
+    pub queued: BTreeMap<String, Transaction>,
+}
+
 /// Transaction Pool Inspect Info
 ///
 /// The inspect inspection property can be queried to list a textual summary

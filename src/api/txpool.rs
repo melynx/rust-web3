@@ -1,9 +1,11 @@
 //! `Txpool` namespace
 
+use jsonrpc_core::Value;
+
 use crate::{
     api::Namespace,
     helpers::CallFuture,
-    types::{TxpoolContentInfo, TxpoolInspectInfo, TxpoolStatus},
+    types::{TxpoolContentInfo, TxpoolContentFromInfo, TxpoolInspectInfo, TxpoolStatus},
     Transport,
 };
 
@@ -31,6 +33,13 @@ impl<T: Transport> Txpool<T> {
     pub fn content(&self) -> CallFuture<TxpoolContentInfo, T::Out> {
         CallFuture::new(self.transport.execute("txpool_content", vec![]))
     }
+
+    /// returns txpool content info
+    pub fn content_from(&self, address: &str) -> CallFuture<TxpoolContentFromInfo, T::Out> {
+        let argval = Value::String(address.to_string());
+        CallFuture::new(self.transport.execute("txpool_contentFrom", vec![argval]))
+    }
+
 
     /// returns txpool inspect info
     pub fn inspect(&self) -> CallFuture<TxpoolInspectInfo, T::Out> {

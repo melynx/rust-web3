@@ -47,7 +47,7 @@ pub use self::{
     transaction::{AccessList, AccessListItem, RawTransaction, Receipt as TransactionReceipt, Transaction},
     transaction_id::TransactionId,
     transaction_request::{CallRequest, TransactionCondition, TransactionRequest},
-    txpool::{TxpoolContentInfo, TxpoolInspectInfo, TxpoolStatus},
+    txpool::{TxpoolContentInfo, TxpoolContentFromInfo, TxpoolInspectInfo, TxpoolStatus},
     uint::{H128, H160, H2048, H256, H512, H520, H64, U128, U256, U64},
     work::Work,
 };
